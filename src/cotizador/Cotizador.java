@@ -41,7 +41,7 @@ public class Cotizador {
         // Validamos la funcion
         if  (loginResult == false){
             JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecta");
-            loginResult = login(loginResult);
+            
         }else
             
            
@@ -75,7 +75,8 @@ public class Cotizador {
         // TODO code application logic here
         }
         
-        }while(count == 3);
+        }while(count < 3);
+        JOptionPane.showMessageDialog(null,"Usuario Bloqueado","ERROR",JOptionPane.ERROR_MESSAGE);
     }
     //funcion que se encarga de poner en mayuscula cualquier palabra que recibe
  public static String enlarge (String upper){
