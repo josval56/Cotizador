@@ -21,11 +21,31 @@ public class Cotizador {
            
         //Declaracion de Variables
         String [] HighRange;
+        //String[] User  = {"JOSVAL","GOKUBLACK","RAMOSMAGIA"};
+        //String[] Pass = {"12q34e","123F546Y"};
         String brand;
         int year;
-        boolean aditionalShare;
+        boolean aditionalShare,loginResult;
         double share;
+        loginResult = true;
+         int count;
+        count = 0;
         
+        do{
+        count++;
+        
+
+        //LLamamos a la funcion
+        loginResult = login(loginResult);
+                       
+        // Validamos la funcion
+        if  (loginResult == false){
+            JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecta");
+            loginResult = login(loginResult);
+        }else
+            
+           
+        {
         //inicializamos la variable para asegurar que no tiene Valor.
         share = 0;
         
@@ -51,8 +71,11 @@ public class Cotizador {
         
         //Mostramos los resultados con JOption pane
         JOptionPane.showMessageDialog(null, "El  "+ brand+ "   Año:   " +year + "   Cotiza en:  " +share, "COTIZACION",JOptionPane.INFORMATION_MESSAGE);
-        
+       
         // TODO code application logic here
+        }
+        
+        }while(count == 3);
     }
     //funcion que se encarga de poner en mayuscula cualquier palabra que recibe
  public static String enlarge (String upper){
@@ -96,4 +119,55 @@ public class Cotizador {
     }
     return quotein;
  }
+ public static boolean login (boolean ret){
+    boolean retuser,retpass;
+    ret = false;
+    retuser = false;
+    retpass = false;
+    String[] User  = {"JOSVAL","GOKUBLACK","RAMOSMAGIA"};
+    String[] Pass = {"12q34e","123F546Y"};
+    String userval,passval;
+   
+    
+     JTextField loginuser = new JTextField(10); 
+     JTextField password = new JTextField(10);
+     
+     Object[] myPanel = { 
+     
+     "Usuario:", loginuser, 
+     "Contraseña:", password
+        };
+
+    // JPanel myPanel = new JPanel(); 
+    // myPanel.add(new JLabel("Usuario")); 
+    // myPanel.add(loginuser); 
+    // myPanel.add(new JLabel("Contraseña")); 
+     //myPanel.add(password); 
+
+     JOptionPane.showMessageDialog(null, myPanel,"Identificarse", JOptionPane.QUESTION_MESSAGE); 
+     
+     //Validamos el usuario y contraseña.
+     for (int i= 0; i <3;i++){
+         
+         userval=enlarge(loginuser.getText());
+         System.out.println(userval);
+        if (userval.equals(User [i])){
+            retuser = true;             
+         }
+     }    
+     for (int j= 0; j <2;j++){
+         
+         passval=password.getText();
+         System.out.println(passval);
+        if (passval.equals(Pass [j])){
+            retpass = true;             
+         }
+     }
+     if (retuser == true && retpass == true){
+             ret = true;
+
+     }
+     
+    return ret;     
+    } 
 }
