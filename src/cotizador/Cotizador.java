@@ -91,7 +91,7 @@ public class Cotizador {
      finalShare = false;
      String [] HighRange = {"AUDI","BMW","VOLVO"};
      for (int i=0; i < 3; i++){
-        if (cars.equals(HighRange [i]))
+        if (cars.equals(HighRange[i]))
           {
               finalShare = true; 
           }
@@ -131,7 +131,7 @@ public class Cotizador {
    
     
      JTextField loginuser = new JTextField(10); 
-     JTextField password = new JTextField(10);
+     JPasswordField password = new JPasswordField(10);
      
      Object[] myPanel = { 
      
